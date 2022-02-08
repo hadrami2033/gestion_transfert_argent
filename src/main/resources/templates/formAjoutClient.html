@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeliaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Ajout Client</title>
+<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+   <div class="container">
+   <div class="card ">
+     <div class="card-header bg-primary"> Ajoute client</div>
+     <div class="card-body">
+     
+      <form th:action="@{save}" method="post">
+      <div class="form-group">
+       <label class="control-label">Nom :</label>
+       <input class="form-control" type="text" name="Nom" th:value="${client.getNon()}" />
+      </div>
+      <div class="form-group">
+       <label class="control-label">Email :</label>
+       <input class="form-control" type="text" name="email" th:value="${client.getEmail()}" />
+      </div>
+      <div>
+      <button type="submit" class="btn btn-primary" >Save</button>
+      </div>
+      </form>
+     </div>
+   </div>
+   
+   </div> 
+</body>
+</html>

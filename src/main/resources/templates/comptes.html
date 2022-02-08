@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeliaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Compte</title>
+<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<p></p>
+
+
+<div class="text-primary" style="text-align: center;"> <h3> BIENVENUE :<p th:text=${nomClient}></p> </h3></div>
+	<div class="container">
+<div class="card border-primary mb-3">
+  <div class="card-header"> Information sur votre compte</div>
+  <div class="card-body">
+  		<label>Code :</label>
+  		<label th:text="${compte.CodeCompte}"></label>
+  		<br>
+  		<label>Date de Creation :</label>
+  		<label th:text="${compte.DateCreation}"></label>
+  		<br>
+  		<label>Solde :</label>
+  		<label th:text="${compte.Solde}"></label>
+  </div>
+  </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  
+  <div class="container">
+<div class="card border-primary mb-3"  th:if="${compte}">
+  <div class="card-header"> Realisez des Operations sur votre compte</div>
+  <div class="card-body">
+  <form th:action="@{/saveOperation}" method="post">
+   <div>
+   <label>Compte :</label>
+   <input type="hidden" name="codeCompte" th:value="${compte.CodeCompte}"/>
+   <label th:text="${compte.CodeCompte}"></label>
+   </div>
+   
+   <div>
+   <input type="radio" name="typeOperation" value="VER"  onchange="document.getElementById('transfert').style.display='none'"/> 
+   <label>Versement</label>
+   <input type="radio" name="typeOperation" value="VIR" checked="checked" onchange="document.getElementById('transfert').style.display='block'"/> 
+   <label>Virement</label>
+   <input type="radio" name="typeOperation" value="RET" onchange="document.getElementById('transfert').style.display='none'"/> 
+   <label>Retrait</label>
+   </div>
+   <div id="transfert">
+   <label>Vers :</label>
+   <input type="text" name="codeCompte2" />
+   </div>
+   <div>
+   <label>Montant :</label>
+   <input type="text" name="montant" />
+   </div>
+  <br>
+   <button type="submit" class="btn btn-primary" >Valider</button>
+  </form>
+  </div>
+  </div>
+  </div>
+</body>
+</html>

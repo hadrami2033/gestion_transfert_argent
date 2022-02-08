@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeliaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Gestion des cliens</title>
+<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<p></p>
+<div>
+<form th:action="@{form}">
+     <button type="submit" class="btn btn-primary" >Ajoute Client</button>
+ </form>
+
+</div>
+<div class="container">
+<table class="table ">
+	  <thead> 
+	  <tr class="bg-primary">
+	  <th>ID</th><th>NOM</th><th>EMAIL</th><th>SUPPRIMER</th>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <tr th:each="c:${listClients}">
+	  <td th:text="${c.getId_client()}"></td>
+	  <td th:text="${c.getNom()}"></td> 
+	  <td th:text="${c.getEmail()}"></td>
+	  
+	  <td ><a onclick="return confirm('Etes vous sure ?')" th:href="@{delete(id=${c.getId_client()})}" >Delete</a></td>
+	  
+	  </tr>
+	  </tbody>
+</table>
+	
+</div>
+
+</body>
+</html>
